@@ -9,10 +9,10 @@ Currently, two official plugins are available:
 
 VITE_BASE_URL=http://localhost:8001
 
-live url = https://swiftrut-task3-frontend.vercel.app/
+live url =
 
-admin email = mayur@gmail.com
-password = Mayur@123
+admin email = dhvaniB21@gmail.com
+password = Dh@123
 
 for import / export
 go to profile page // you can find options there for import and export
