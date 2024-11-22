@@ -184,33 +184,33 @@ export default function Profile() {
         <h2 className="mb-6 text-2xl font-semibold text-gray-700 text-center">Profile Settings</h2>
         <form className="space-y-4" onSubmit={sendData}>
           <input
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-gray-500"
             type="text"
             placeholder="Username"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
           <input
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-gray-500"
             type="email"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-gray-500"
             type="password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition" type="submit">
+          <button className="w-full bg-gray-500 text-white py-2 rounded-md hover:bg-gray-600 transition" type="submit">
             Save Changes
           </button>
         </form>
 
         <div className="mt-6">
-          <button className="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600 transition" onClick={deleteUser}>
+          <button className="w-full bg-gray-700 text-white py-2 rounded-md hover:bg-gray-800 transition" onClick={deleteUser}>
             Delete User
           </button>
         </div>
@@ -225,13 +225,13 @@ export default function Profile() {
             className="mb-4 block w-full text-sm text-gray-500
             file:mr-4 file:py-2 file:px-4 file:rounded-full
             file:border-0 file:text-sm file:font-semibold
-            file:bg-blue-50 file:text-blue-700
-            hover:file:bg-blue-100"
+            file:bg-gray-50 file:text-gray-700
+            hover:file:bg-gray-100"
           />
-          <button onClick={handleImport} className="w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-600 transition mb-4">
+          <button onClick={handleImport} className="w-full bg-gray-500 text-white py-2 rounded-md hover:bg-gray-600 transition mb-4">
             Import Tasks
           </button>
-          <button onClick={handleExport} className="w-full bg-yellow-500 text-white py-2 rounded-md hover:bg-yellow-600 transition">
+          <button onClick={handleExport} className="w-full bg-gray-600 text-white py-2 rounded-md hover:bg-gray-700 transition">
             Export Tasks
           </button>
         </div>

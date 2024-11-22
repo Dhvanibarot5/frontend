@@ -105,7 +105,15 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/otherUserProfile/:id" element={<OtherUserProfile />} />
           </Routes>
-          <ToastContainer />
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            theme="colored"
+            toastStyle={{
+              backgroundColor: '#795548', // brown color for success
+              color: 'white'
+            }}
+          />
         </AuthProvider>
       </BrowserRouter>
     </>

@@ -146,7 +146,7 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-red-200 min-h-screen">
+    <div className="bg-gray-100 min-h-screen">
       <div className="container mx-auto ">
         <div className="pt-28 flex flex-col items-center">
           <div className="w-2/3 rounded-sm">

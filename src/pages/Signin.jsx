@@ -67,11 +67,11 @@ export default function Signin() {
   };
 
   return (
-    <div className=" bg-red-200 h-screen">
+    <div className="bg-brown-200 h-screen">
       <div className="container mx-auto ">
         <div className="flex justify-center items-center h-screen">
-          <div className="bg-red-100 p-10 rounded-md text-center">
-            <h1 className="mb-10 text-2xl md:text-5xl font-bold text-gray-600">Sundaram Enterprise</h1>
+          <div className="bg-brown-100 p-10 rounded-md text-center">
+            <h1 className="mb-10 text-2xl md:text-5xl font-bold text-brown-600">Sundowners Enterprise</h1>
 
             <form className="flex flex-col gap-2" action="" onSubmit={loginData}>
               <input
@@ -94,12 +94,12 @@ export default function Signin() {
                 }}
                 name="password"
               />
-              <button className=" bg-blue-500 text-white rounded-md py-1 my-4" type="submit">
+              <button className="bg-gray-500 text-white rounded-md py-1 my-4" type="submit">
                 Sign in
               </button>
               <p>
                 Already have not an account?{" "}
-                <Link className="text-blue-600" to="/signup">
+                <Link className="text-gray-600" to="/signup">
                   Sign Up
                 </Link>
               </p>

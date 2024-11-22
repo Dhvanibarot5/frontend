@@ -104,10 +104,10 @@ export default function AddTask() {
   }, [BASE_URL, navigate]);
 
   return (
-    <div className=" bg-red-200 h-screen">
-      <div className="container mx-auto ">
+    <div className="bg-gray-200 h-screen">
+      <div className="container mx-auto">
         <div className="flex justify-center items-center h-screen">
-          <div className="bg-red-100 p-10 rounded-md text-center w-2/3">
+          <div className="bg-gray-100 p-10 rounded-md text-center w-2/3">
             <h2 className="mb-5 text-xl font-semibold text-gray-600">Add Your Tasks</h2>
             <form className="flex flex-col gap-2" onSubmit={sendData}>
               <input
@@ -132,7 +132,7 @@ export default function AddTask() {
                 name="description"
               ></textarea>
               <select
-                className="mb-3 p-2 rounded-sm"
+                className="mb-3 p-2 rounded-sm focus:outline-none focus:ring-2 focus:ring-gray-500"
                 value={category}
                 onChange={(e) => {
                   setCategory(e.target.value);
@@ -145,7 +145,7 @@ export default function AddTask() {
 
               {user.role === "admin" && (
                 <select
-                  className="mb-3 p-2 rounded-sm"
+                  className="mb-3 p-2 rounded-sm focus:outline-none focus:ring-2 focus:ring-gray-500"
                   value={selectedUserId}
                   onChange={(e) => {
                     setSelectedUserId(e.target.value);
@@ -162,7 +162,7 @@ export default function AddTask() {
                 </select>
               )}
 
-              <button className=" bg-blue-500 text-white rounded-md py-1 my-4" type="submit">
+              <button className="bg-gray-500 text-white rounded-md py-1 my-4 hover:bg-gray-600" type="submit">
                 Add Task
               </button>
             </form>
