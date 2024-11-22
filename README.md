@@ -12,7 +12,7 @@ VITE_BASE_URL=http://localhost:8001
 live url =
 
 admin email = dhvaniB21@gmail.com
-password = Dh@123
+password = Dhvani@123
 
 for import / export
 go to profile page // you can find options there for import and export
