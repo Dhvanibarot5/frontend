@@ -4,7 +4,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { notifyTaskUpdate } from "../js/socket.js";
 
-export default function AddTask() { 
+export default function AddTask() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("medium");
@@ -60,8 +60,6 @@ export default function AddTask() {
 
     const fetchUser = async () => {
       try {
-        const token = localStorage.getItem("token");
-
         const response = await axios.get(`${BASE_URL}/users/getUser`, {
           withCredentials: true,
           headers: {
@@ -104,70 +102,70 @@ export default function AddTask() {
   }, [BASE_URL, navigate]);
 
   return (
-    <div className="bg-gray-200 h-screen">
-      <div className="container mx-auto">
-        <div className="flex justify-center items-center h-screen">
-          <div className="bg-gray-100 p-10 rounded-md text-center w-2/3">
-            <h2 className="mb-5 text-xl font-semibold text-gray-600">Add Your Tasks</h2>
-            <form className="flex flex-col gap-2" onSubmit={sendData}>
-              <input
-                className="mb-3 p-2 rounded-sm "
-                type="text"
-                placeholder="Add Title"
-                value={title}
-                onChange={(e) => {
-                  setTitle(e.target.value);
-                }}
-                name="title"
-              />
-              <textarea
-                className="mb-3 p-2 rounded-sm text-sm"
-                type="text"
-                rows={5}
-                placeholder="Add description"
-                value={description}
-                onChange={(e) => {
-                  setDescription(e.target.value);
-                }}
-                name="description"
-              ></textarea>
-              <select
-                className="mb-3 p-2 rounded-sm focus:outline-none focus:ring-2 focus:ring-gray-500"
-                value={category}
-                onChange={(e) => {
-                  setCategory(e.target.value);
-                }}
-              >
-                <option value="high">High</option>
-                <option value="medium">Medium</option>
-                <option value="low">Low</option>
-              </select>
-
-              {user.role === "admin" && (
-                <select
-                  className="mb-3 p-2 rounded-sm focus:outline-none focus:ring-2 focus:ring-gray-500"
-                  value={selectedUserId}
-                  onChange={(e) => {
-                    setSelectedUserId(e.target.value);
-                  }}
-                >
-                  <option value="" disabled>
-                    Select User
-                  </option>
-                  {users?.map((user) => (
-                    <option key={user._id} value={user._id}>
-                      {user.name}
-                    </option>
-                  ))}
-                </select>
-              )}
-
-              <button className="bg-gray-500 text-white rounded-md py-1 my-4 hover:bg-gray-600" type="submit">
-                Add Task
-              </button>
-            </form>
+    <div className="bg-gradient-to-r from-blue-50 to-indigo-100 min-h-screen flex items-center justify-center">
+      <div className="bg-white shadow-2xl rounded-lg p-10 w-full max-w-lg">
+        <h2 className="text-3xl font-bold text-indigo-800 mb-6 text-center">Add a New Task</h2>
+        <form className="space-y-6" onSubmit={sendData}>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Task Title</label>
+            <input
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              type="text"
+              placeholder="Enter task title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              name="title"
+            />
           </div>
-        </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Task Description</label>
+            <textarea
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              rows={4}
+              placeholder="Enter task description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              name="description"
+            ></textarea>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Priority</label>
+            <select
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </div>
+          {user.role === "admin" && (
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Assign To</label>
+              <select
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                value={selectedUserId}
+                onChange={(e) => setSelectedUserId(e.target.value)}
+              >
+                <option value="" disabled>
+                  Select a user
+                </option>
+                {users?.map((user) => (
+                  <option key={user._id} value={user._id}>
+                    {user.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+          <button
+            className="w-full bg-indigo-800 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition"
+            type="submit"
+          >
+            Create Task
+          </button>
+        </form>
       </div>
     </div>
   );

@@ -176,7 +176,7 @@ export default function Profile() {
   };
 
   return (
-    <div className="bg-gradient-to-br from-gray-100 to-gray-300 min-h-screen flex items-center justify-center">
+    <div className="bg-gradient-to-br from-gray-100 to-gray-300 pt-20 min-h-screen flex items-center justify-center">
       <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-lg">
         <h2 className="mb-6 text-3xl font-bold text-gray-800 text-center">Profile Settings</h2>
         <form className="space-y-6" onSubmit={sendData}>
@@ -207,7 +207,10 @@ export default function Profile() {
         </form>
 
         <div className="mt-6">
-          <button className="w-full bg-red-600 text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition duration-200" onClick={deleteUser}>
+          <button
+            className="w-full bg-red-600 text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition duration-200"
+            onClick={deleteUser}
+          >
             Delete Account
           </button>
         </div>
@@ -224,10 +227,16 @@ export default function Profile() {
             file:font-semibold file:bg-gray-200 file:text-gray-700
             hover:file:bg-gray-300"
           />
-          <button onClick={handleImport} className="w-full bg-green-500 text-white py-3 rounded-lg font-semibold hover:bg-green-600 transition duration-200 mb-4">
+          <button
+            onClick={handleImport}
+            className="w-full bg-green-500 text-white py-3 rounded-lg font-semibold hover:bg-green-600 transition duration-200 mb-4"
+          >
             Import Tasks
           </button>
-          <button onClick={handleExport} className="w-full bg-blue-500 text-white py-3 rounded-lg font-semibold hover:bg-blue-600 transition duration-200">
+          <button
+            onClick={handleExport}
+            className="w-full bg-blue-500 text-white py-3 rounded-lg font-semibold hover:bg-blue-600 transition duration-200"
+          >
             Export Tasks
           </button>
         </div>

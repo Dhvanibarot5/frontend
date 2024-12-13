@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthProvider } from "./context/AuthProvider";
@@ -110,8 +109,8 @@ function App() {
             autoClose={3000}
             theme="colored"
             toastStyle={{
-              backgroundColor: '#795548',
-              color: 'white'
+              backgroundColor: "#795548",
+              color: "white",
             }}
           />
         </AuthProvider>
