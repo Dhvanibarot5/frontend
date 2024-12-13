@@ -154,7 +154,7 @@ export default function Home() {
               <h1 className="text-grey-darkest text-3xl font-bold text-center">Welcome {user?.name}</h1>
             </div>
             <div className="mb-4">
-              <h1 className="text-grey-darkest text-xl font-bold">Todo List</h1>
+              <h1 className="text-blue-700 text-xl font-bold">Todo List</h1>
             </div>
             {tasks.length > 0 ? (
               tasks.map((task, index) => {
@@ -163,7 +163,7 @@ export default function Home() {
             ) : (
               <p>No posts available</p>
             )}
-            <button onClick={sendTestNotification}>Send Test Notification</button>
+            <button onClick={sendTestNotification} className="text-blue-700 float-end">Send Test Notification</button>
           </div>
         </div>
       </div>

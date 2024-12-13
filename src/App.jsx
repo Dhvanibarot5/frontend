@@ -110,7 +110,7 @@ function App() {
             autoClose={3000}
             theme="colored"
             toastStyle={{
-              backgroundColor: '#795548', // brown color for success
+              backgroundColor: '#795548',
               color: 'white'
             }}
           />

@@ -25,8 +25,6 @@ export default function TaskCard({ task, user }) {
           },
         }
       );
-      console.log("complete task", response);
-
       toast.success(response.data.message);
       setIsRefresh(!isRefresh);
       navigate("/");
@@ -63,97 +61,87 @@ export default function TaskCard({ task, user }) {
   };
 
   return (
-    <>
-      <div className="h-100 w-full flex items-center justify-center bg-teal-lightest font-sans">
-        <div
-          className={`  rounded shadow-xl p-3 mb-4 w-full lg:w-3/4 lg:max-w-lg ${
-            task.isCompleted ? "bg-zinc-300" : "bg-white"
+    <div className="flex justify-center py-4">
+      <div
+        className={`rounded-lg shadow-md p-6 w-full lg:w-3/4 xl:w-2/3 transition-all hover:shadow-xl ${
+          task.isCompleted ? "bg-gray-100" : "bg-white"
+        }`}
+      >
+        <div className="flex justify-between items-center border-b pb-4 mb-4">
+          <h3
+            className={`text-xl font-semibold leading-tight ${
+              task.isCompleted ? "line-through text-gray-400" : "text-gray-800"
+            }`}
+          >
+            {task.title}
+          </h3>
+          <span className="text-sm text-gray-600">
+            {user.role === "user" && task.createdBy.name === user.name
+              ? "By: @You"
+              : `By: @${task.createdBy.name}`}
+          </span>
+        </div>
+
+        <p
+          className={`text-md mb-4 leading-relaxed ${
+            task.isCompleted ? "line-through text-gray-400" : "text-gray-700"
           }`}
         >
-          <div>
-            <div className="flex  items-center justify-between">
-              <h3
-                className={`text-lg font-semibold ${
-                  task.isCompleted ? "line-through text-gray-400" : ""
-                }`}
-              >
-                {task.title}
-              </h3>
-              <div className={`items-center flex `}>
-                <p>
-                  {" "}
-                  <span>
-                    {`${
-                      user.role == "user"
-                        ? task.createdBy.name == user.name
-                          ? "By : @You"
-                          : "By : @Admin"
-                        : task.createdBy.name == user.name
-                        ? "By : @You"
-                        : `By : @${task.createdBy.name}`
-                    }`}
-                  </span>
-                </p>
-              </div>
-            </div>
-            <div className="flex mb-4 items-center justify-between">
-              <p className={`text-md ${task.isCompleted ? "line-through text-gray-400" : ""}`}>
-                {task.description}
-              </p>
-              <div className={`items-center ${user.role == "user" ? "hidden" : "flex"}`}>
-                <p>
-                  for : <span>@{task?.assignTo?.name}</span>
-                </p>
-              </div>
-            </div>
-            <div className="flex justify-between items-center">
-              <div className="flex justify-center items-center">
-                <p className="text-sm font-semibold text-gray-600">
-                  Status :{" "}
-                  <span className={task.isCompleted ? "text-green-500" : "text-red-500"}>
-                    {task.isCompleted ? " Done" : " Pending"}
-                  </span>
-                </p>
-              </div>
-              <div className="flex justify-center items-center rounded">
-                <p className="text-sm font-semibold text-gray-600">
-                  Category :{" "}
-                  <span
-                    className={
-                      task.category == "high"
-                        ? "text-red-500"
-                        : task.category == "medium"
-                        ? "text-yellow-500"
-                        : "text-green-500"
-                    }
-                  >
-                    {task.category}
-                  </span>
-                </p>
-              </div>
-              <div className="flex justify-center items-center">
-                <button
-                  className={`flex-no-shrink px-1 mr-2 border-2 rounded hover:text-white text-sm  ${
-                    task.isCompleted
-                      ? "text-gray-600 border-gray-600 hover:bg-gray-600"
-                      : "text-green-600 border-green-600 hover:bg-green-600"
-                  }`}
-                  onClick={() => completeTask(task._id)}
-                >
-                  {task.isCompleted ? "Not Done" : " Done"}
-                </button>
-                <button
-                  className="flex-no-shrink px-1 text-sm border-2 rounded text-red-600 border-red-600 hover:text-white hover:bg-red-600"
-                  onClick={() => deleteTask(task._id)}
-                >
-                  Remove
-                </button>
-              </div>
-            </div>
+          {task.description}
+        </p>
+
+        <div className="flex justify-between items-center text-sm mb-4">
+          <div className="flex items-center">
+            <span className="font-medium text-gray-600 mr-2">Status:</span>
+            <span
+              className={
+                task.isCompleted ? "text-green-500" : "text-red-500"
+              }
+            >
+              {task.isCompleted ? "Done" : "Pending"}
+            </span>
           </div>
+          <div className="flex items-center">
+            <span className="font-medium text-gray-600 mr-2">Category:</span>
+            <span
+              className={
+                task.category === "high"
+                  ? "text-red-500"
+                  : task.category === "medium"
+                  ? "text-yellow-500"
+                  : "text-green-500"
+              }
+            >
+              {task.category}
+            </span>
+          </div>
+          {user.role !== "user" && (
+            <div className="text-gray-600">
+              <span className="font-medium">For:</span> @{task?.assignTo?.name}
+            </div>
+          )}
+        </div>
+
+        <div className="flex justify-end space-x-4">
+          <button
+            className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+              task.isCompleted
+                ? "bg-gray-300 text-gray-600 hover:bg-gray-400"
+                : "bg-green-100 text-green-600 hover:bg-green-200"
+            }`}
+            onClick={() => completeTask(task._id)}
+          >
+            {task.isCompleted ? "Mark as Pending" : "Mark as Done"}
+          </button>
+          <button
+            className="px-4 py-2 text-sm font-medium text-red-600 bg-red-100 rounded-md hover:bg-red-200 transition-colors"
+            onClick={() => deleteTask(task._id)}
+          >
+            Remove
+          </button>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
