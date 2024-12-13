@@ -116,12 +116,10 @@ export default function Profile() {
     }
   };
 
-  // Handle file selection for import
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
   };
 
-  // Import function
   const handleImport = async () => {
     const token = localStorage.getItem("token");
 
@@ -151,7 +149,6 @@ export default function Profile() {
     }
   };
 
-  // Export function
   const handleExport = async () => {
     const token = localStorage.getItem("token");
 
@@ -179,59 +176,58 @@ export default function Profile() {
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen flex items-center justify-center">
-      <div className="bg-white shadow-md rounded-lg p-8 w-full max-w-md">
-        <h2 className="mb-6 text-2xl font-semibold text-gray-700 text-center">Profile Settings</h2>
-        <form className="space-y-4" onSubmit={sendData}>
+    <div className="bg-gradient-to-br from-gray-100 to-gray-300 min-h-screen flex items-center justify-center">
+      <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-lg">
+        <h2 className="mb-6 text-3xl font-bold text-gray-800 text-center">Profile Settings</h2>
+        <form className="space-y-6" onSubmit={sendData}>
           <input
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-gray-500"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             type="text"
             placeholder="Username"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
           <input
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-gray-500"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             type="email"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-gray-500"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             type="password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="w-full bg-gray-500 text-white py-2 rounded-md hover:bg-gray-600 transition" type="submit">
+          <button className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-200" type="submit">
             Save Changes
           </button>
         </form>
 
         <div className="mt-6">
-          <button className="w-full bg-gray-700 text-white py-2 rounded-md hover:bg-gray-800 transition" onClick={deleteUser}>
-            Delete User
+          <button className="w-full bg-red-600 text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition duration-200" onClick={deleteUser}>
+            Delete Account
           </button>
         </div>
 
-        {/* Import & Export Section */}
         <div className="mt-8">
-          <h3 className="text-lg font-semibold text-gray-600 mb-2">Import & Export Tasks</h3>
+          <h3 className="text-xl font-semibold text-gray-700 mb-4">Import & Export Tasks</h3>
           <input
             type="file"
             accept=".csv"
             onChange={handleFileChange}
-            className="mb-4 block w-full text-sm text-gray-500
-            file:mr-4 file:py-2 file:px-4 file:rounded-full
-            file:border-0 file:text-sm file:font-semibold
-            file:bg-gray-50 file:text-gray-700
-            hover:file:bg-gray-100"
+            className="block w-full text-sm text-gray-500 mb-4
+            file:mr-4 file:py-2 file:px-4 file:rounded-lg
+            file:border file:border-gray-300 file:text-sm
+            file:font-semibold file:bg-gray-200 file:text-gray-700
+            hover:file:bg-gray-300"
           />
-          <button onClick={handleImport} className="w-full bg-gray-500 text-white py-2 rounded-md hover:bg-gray-600 transition mb-4">
+          <button onClick={handleImport} className="w-full bg-green-500 text-white py-3 rounded-lg font-semibold hover:bg-green-600 transition duration-200 mb-4">
             Import Tasks
           </button>
-          <button onClick={handleExport} className="w-full bg-gray-600 text-white py-2 rounded-md hover:bg-gray-700 transition">
+          <button onClick={handleExport} className="w-full bg-blue-500 text-white py-3 rounded-lg font-semibold hover:bg-blue-600 transition duration-200">
             Export Tasks
           </button>
         </div>
